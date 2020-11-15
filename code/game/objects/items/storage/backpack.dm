@@ -343,7 +343,7 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
-	slowdown = 1
+	slowdown = 0.25
 
 /obj/item/storage/backpack/duffelbag/ComponentInitialize()
 	. = ..()
