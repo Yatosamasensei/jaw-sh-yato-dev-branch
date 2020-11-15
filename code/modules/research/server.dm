@@ -82,6 +82,7 @@
 /obj/machinery/rnd/server/proc/refresh_working()
 	if(machine_stat & EMPED || research_disabled || machine_stat & NOPOWER)
 		working = FALSE
+		researching_node = null
 	else
 		working = TRUE
 	update_icon()
@@ -165,9 +166,11 @@
 		return
 
 	var/datum/gas_mixture/env = L.return_air()
+	var/heatFactor = 0
 	// The RD Server will increase 1degC of heat in a normal atmosphere of moles.
 	// 0.5 if turf is twice as dense as normal, 2 if twice as thin
-	var/heatFactor = max(MOLES_CELLSTANDARD / env.total_moles(), 0)
+	if (working && !research_disabled)
+		heatFactor = max(MOLES_CELLSTANDARD / env.total_moles(), 0)
 	// Adjust external temperature by cycle energy and mole heat factor
 	env.temperature += temp_per_cycle * heatFactor
 	// If our air is hotter than the CPU, we bump the CPU's internal temperature as well.
