@@ -104,7 +104,7 @@
 	implements = list(TOOL_SAW = 100,/obj/item/melee/arm_blade = 75,
 	/obj/item/fireaxe = 50, /obj/item/hatchet = 35, /obj/item/kitchen/knife/butcher = 25, /obj/item = 20) //20% success (sort of) with any sharp item with a force>=10
 	// KF: Remove this needlessly slow step.
-	//time = 54
+	time = 24
 
 /datum/surgery_step/saw/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, "<span class='notice'>You begin to saw through the bone in [target]'s [parse_zone(target_zone)]...</span>",
