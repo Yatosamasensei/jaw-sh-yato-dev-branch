@@ -101,6 +101,24 @@
 	virus_suspectibility = 1
 	resulting_atoms = list(/mob/living/simple_animal/pet/dog/corgi = 1)
 
+// KF: Slobbermutt
+/datum/micro_organism/cell_line/mutt
+	desc = "Dysgenic canid cells"
+	required_reagents = list(
+						/datum/reagent/consumable/nutriment/protein,
+						/datum/reagent/liquidgibs)
+
+	supplementary_reagents = list(
+						/datum/reagent/growthserum = 4,
+						/datum/reagent/consumable/nutriment/vitamin = 1)
+
+	suppressive_reagents = list(
+						/datum/reagent/consumable/garlic = -2,
+						/datum/reagent/consumable/tearjuice = -3,
+						/datum/reagent/consumable/coco = -2)
+	virus_suspectibility = 1
+	resulting_atoms = list(/mob/living/simple_animal/pet/dog/corgi = 1)
+
 /datum/micro_organism/cell_line/pug
 	desc = "Squat canid cells"
 	required_reagents = list(

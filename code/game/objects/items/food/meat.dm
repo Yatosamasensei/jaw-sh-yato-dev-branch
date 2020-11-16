@@ -518,6 +518,16 @@
 	. = ..()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CORGI, CELL_VIRUS_TABLE_GENERIC_MOB)
 
+// KF: Slobbermutt
+/obj/item/food/meat/slab/mutt
+	name = "mutt meat"
+	desc = "Some of the worst marbling you've ever seen."
+	foodtypes = RAW | MEAT | GROSS
+
+/obj/item/food/meat/slab/mutt/Initialize()
+	. = ..()
+	AddElement(/datum/element/swabable, CELL_LINE_TABLE_MUTT, CELL_VIRUS_TABLE_GENERIC_MOB)
+
 /obj/item/food/meat/slab/pug
 	name = "pug meat"
 	desc = "Tastes like... well you know..."

@@ -50270,8 +50270,8 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "hec" = (
-/obj/structure/bed/dogbed/renault,
-/mob/living/simple_animal/pet/fox/renault,
+/obj/structure/bed/dogbed/mutt,
+/mob/living/simple_animal/pet/dog/mutt/captains,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "heL" = (

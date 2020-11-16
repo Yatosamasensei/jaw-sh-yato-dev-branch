@@ -50685,8 +50685,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "kHO" = (
-/obj/structure/bed/dogbed/renault,
-/mob/living/simple_animal/pet/fox/renault,
+/obj/structure/bed/dogbed/mutt,
+/mob/living/simple_animal/pet/dog/mutt/captains,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/captain)
 "kHP" = (
