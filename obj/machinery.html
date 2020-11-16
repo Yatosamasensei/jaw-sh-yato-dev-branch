@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery.html#var">Var Details</a> - <a href="obj/machinery.html#proc">Proc Details</a></header>
+<main>
+<h1>machinery <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a></aside>
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L83">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 83"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery.html#var/is_operational">is_operational</a></th><td>A combination of factors such as having power, not being broken and so on. Boolean.</td></tr>
+            <tr><th><a href="obj/machinery.html#var/processing_flags">processing_flags</a></th><td>Viable flags to go here are START_PROCESSING_ON_INIT, or START_PROCESSING_MANUALLY. See code__DEFINES\machines.dm for more information on these flags.</td></tr>
+            <tr><th><a href="obj/machinery.html#var/subsystem_type">subsystem_type</a></th><td>What subsystem this machine will use, which is generally SSmachines or SSfastprocess. By default all machinery use SSmachines. This fires a machine's process() roughly every 2 seconds.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/machinery.html#proc/AI_notify_hack">AI_notify_hack</a></th><td>Alerts the AI that a hack is in progress.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/assign_random_name">assign_random_name</a></th><td>Generate a name devices</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/begin_processing">begin_processing</a></th><td>Helper proc for telling a machine to start processing with the subsystem type that is located in its <code>subsystem_type</code> var.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/directly_use_power">directly_use_power</a></th><td>An alternative to 'use_power', this proc directly costs the APC in direct charge, as opposed to being calculated periodically.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/dump_contents">dump_contents</a></th><td>Drop every movable atom in the machine's contents list, including any components and circuit.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/dump_inventory_contents">dump_inventory_contents</a></th><td>Drop every movable atom in the machine's contents list that is not a component_part.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/end_processing">end_processing</a></th><td>Helper proc for telling a machine to stop processing with the subsystem type that is located in its <code>subsystem_type</code> var.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/on_set_is_operational">on_set_is_operational</a></th><td>Called when the value of <code>is_operational</code> changes, so we can react to it.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/on_set_machine_stat">on_set_machine_stat</a></th><td>Called when the value of <code>machine_stat</code> changes, so we can react to it.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/open_machine">open_machine</a></th><td>Opens the machine.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/power_change">power_change</a></th><td>Called whenever the power settings of the containing area change</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/set_is_operational">set_is_operational</a></th><td>Called when we want to change the value of the <code>is_operational</code> variable. Boolean.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/set_machine_stat">set_machine_stat</a></th><td>Called when we want to change the value of the machine_stat variable. Holds bitflags.</td></tr>
+            <tr><th><a href="obj/machinery.html#proc/try_put_in_hand">try_put_in_hand</a></th><td>Puts passed object in to user's hand</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/is_operational"><aside class="declaration">var </aside>is_operational
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 108"/></a></h3>
+        <p>A combination of factors such as having power, not being broken and so on. Boolean.</p><h3 id="var/processing_flags"><aside class="declaration">var </aside>processing_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 118"/></a></h3>
+        <p>Viable flags to go here are START_PROCESSING_ON_INIT, or START_PROCESSING_MANUALLY. See code__DEFINES\machines.dm for more information on these flags.</p><h3 id="var/subsystem_type"><aside class="declaration">var </aside>subsystem_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L120">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 120"/></a></h3>
+        <p>What subsystem this machine will use, which is generally SSmachines or SSfastprocess. By default all machinery use SSmachines. This fires a machine's process() roughly every 2 seconds.</p><h2 id="proc">Proc Details</h2><h3 id="proc/AI_notify_hack"><aside class="declaration">proc </aside>AI_notify_hack<aside>() 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L739">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 739"/></a></aside>
+        </h3>
+        <p>Alerts the AI that a hack is in progress.</p>
+<p>Sends all AIs a message that a hack is occurring.  Specifically used for space ninja tampering as this proc was originally in the ninja files.
+However, the proc may also be used elsewhere.</p><h3 id="proc/assign_random_name"><aside class="declaration">proc </aside>assign_random_name<aside>(len) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L720">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 720"/></a></aside>
+        </h3>
+        <p>Generate a name devices</p>
+<p>Creates a randomly generated tag or name for devices5
+The length of the generated name can be set by passing in an int
+args:</p>
+<ul>
+<li>len (int)(Optional) Default=5 The length of the name
+Returns (string) The generated name</li>
+</ul><h3 id="proc/begin_processing"><aside class="declaration">proc </aside>begin_processing<aside>() 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L156">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 156"/></a></aside>
+        </h3>
+        <p>Helper proc for telling a machine to start processing with the subsystem type that is located in its <code>subsystem_type</code> var.</p><h3 id="proc/directly_use_power"><aside class="declaration">proc </aside>directly_use_power<aside>(amount) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/modules/power/power.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;power.dm 108"/></a></aside>
+        </h3>
+        <p>An alternative to 'use_power', this proc directly costs the APC in direct charge, as opposed to being calculated periodically.</p>
+<ul>
+<li>Amount: How much power the APC's cell is to be costed.</li>
+</ul><h3 id="proc/dump_contents">dump_contents<aside>() 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L230">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 230"/></a></aside>
+        </h3>
+        <p>Drop every movable atom in the machine's contents list, including any components and circuit.</p><h3 id="proc/dump_inventory_contents"><aside class="declaration">proc </aside>dump_inventory_contents<aside>(/list/subset) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L253">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 253"/></a></aside>
+        </h3>
+        <p>Drop every movable atom in the machine's contents list that is not a component_part.</p>
+<p>Proc does not drop components and will skip over anything in the component_parts list.
+Call dump_contents() to drop all contents including components.
+Arguments:</p>
+<ul>
+<li>subset - If this is not null, only atoms that are also contained within the subset list will be dropped.</li>
+</ul><h3 id="proc/end_processing"><aside class="declaration">proc </aside>end_processing<aside>() 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L161">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 161"/></a></aside>
+        </h3>
+        <p>Helper proc for telling a machine to stop processing with the subsystem type that is located in its <code>subsystem_type</code> var.</p><h3 id="proc/on_set_is_operational"><aside class="declaration">proc </aside>on_set_is_operational<aside>(old_value) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L329">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 329"/></a></aside>
+        </h3>
+        <p>Called when the value of <code>is_operational</code> changes, so we can react to it.</p><h3 id="proc/on_set_machine_stat"><aside class="declaration">proc </aside>on_set_machine_stat<aside>(old_value) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L198">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 198"/></a></aside>
+        </h3>
+        <p>Called when the value of <code>machine_stat</code> changes, so we can react to it.</p><h3 id="proc/open_machine"><aside class="declaration">proc </aside>open_machine<aside>(drop) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L219">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 219"/></a></aside>
+        </h3>
+        <p>Opens the machine.</p>
+<p>Will update the machine icon and any user interfaces currently open.
+Arguments:</p>
+<ul>
+<li>drop - Boolean. Whether to drop any stored items in the machine. Does not include components.</li>
+</ul><h3 id="proc/power_change"><aside class="declaration">proc </aside>power_change<aside>() 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/modules/power/power.dm#L137">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;power.dm 137"/></a></aside>
+        </h3>
+        <p>Called whenever the power settings of the containing area change</p>
+<p>by default, check equipment channel &amp; set flag, can override if needed</p>
+<p>Returns TRUE if the NOPOWER flag was toggled</p><h3 id="proc/set_is_operational"><aside class="declaration">proc </aside>set_is_operational<aside>(new_value) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L320">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 320"/></a></aside>
+        </h3>
+        <p>Called when we want to change the value of the <code>is_operational</code> variable. Boolean.</p><h3 id="proc/set_machine_stat"><aside class="declaration">proc </aside>set_machine_stat<aside>(new_value) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L189">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 189"/></a></aside>
+        </h3>
+        <p>Called when we want to change the value of the machine_stat variable. Holds bitflags.</p><h3 id="proc/try_put_in_hand"><aside class="declaration">proc </aside>try_put_in_hand<aside>(/<a href="obj.html">obj</a>/object, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/jaw-sh/tgstation/blob/55233dbcbe1849599ddf7d808f7739fc50229568/code/game/machinery/_machinery.dm#L277">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;_machinery.dm 277"/></a></aside>
+        </h3>
+        <p>Puts passed object in to user's hand</p>
+<p>Puts the passed object in to the users hand if they are adjacent.
+If the user is not adjacent then place the object on top of the machine.</p>
+<p>Vars:</p>
+<ul>
+<li>object (obj) The object to be moved in to the users hand.</li>
+<li>user (mob/living) The user to recive the object</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/jaw-sh/tgstation/tree/55233dbcbe1849599ddf7d808f7739fc50229568">55233db</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.3.0</a></footer>
+</body>
+</html>
