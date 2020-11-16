@@ -19,6 +19,7 @@ GLOBAL_LIST_INIT_TYPED(cell_line_tables, /list, list(
 	CELL_LINE_TABLE_GRAPE = list(/datum/micro_organism/cell_line/sholean_grapes = 1),
 	CELL_LINE_TABLE_MEGACARP = list(/datum/micro_organism/cell_line/megacarp = 1),
 	CELL_LINE_TABLE_MOUSE = list(/datum/micro_organism/cell_line/mouse = 1),
+	CELL_LINE_TABLE_MUTT = list(/datum/micro_organism/cell_line/mutt = 1),
 	CELL_LINE_TABLE_PINE = list(/datum/micro_organism/cell_line/pine = 1),
 	CELL_LINE_TABLE_PUG = list(/datum/micro_organism/cell_line/pug = 1),
 	CELL_LINE_TABLE_SLIME = list(/datum/micro_organism/cell_line/slime = 1),

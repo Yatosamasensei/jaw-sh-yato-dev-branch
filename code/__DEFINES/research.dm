@@ -94,6 +94,7 @@
 #define CELL_LINE_TABLE_CHICKEN "cell_line_chicken_table"
 #define CELL_LINE_TABLE_COCKROACH "cell_line_cockroach_table"
 #define CELL_LINE_TABLE_CORGI "cell_line_corgi_table"
+#define CELL_LINE_TABLE_MUTT "cell_line_mutt_table"
 #define CELL_LINE_TABLE_COW "cell_line_cow_table"
 #define CELL_LINE_TABLE_GELATINOUS "cell_line_gelatinous_table"
 #define CELL_LINE_TABLE_GRAPE "cell_line_grape_table"

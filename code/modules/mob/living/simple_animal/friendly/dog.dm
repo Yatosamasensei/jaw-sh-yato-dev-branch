@@ -30,60 +30,80 @@
 
 /mob/living/simple_animal/pet/dog/Life()
 	..()
-
-	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
 		turns_since_scan++
 		if(turns_since_scan > 5)
 			turns_since_scan = 0
-			if((movement_target) && !(isturf(movement_target.loc) || ishuman(movement_target.loc) ))
-				movement_target = null
-				stop_automated_movement = FALSE
-			if( !movement_target || !(movement_target.loc in oview(src, 3)) )
-				movement_target = null
-				stop_automated_movement = FALSE
-				for(var/obj/item/reagent_containers/food/snacks/S in oview(src,3))
-					if(isturf(S.loc) || ishuman(S.loc))
-						movement_target = S
-						break
-			if(movement_target)
-				stop_automated_movement = TRUE
-				step_to(src,movement_target,1)
-				sleep(3)
-				step_to(src,movement_target,1)
-				sleep(3)
-				step_to(src,movement_target,1)
-
-				if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
-					var/turf/T = get_turf(movement_target)
-					if(!T)
-						return
-					if (T.x < src.x)
-						setDir(WEST)
-					else if (T.x > src.x)
-						setDir(EAST)
-					else if (T.y < src.y)
-						setDir(SOUTH)
-					else if (T.y > src.y)
-						setDir(NORTH)
-					else
-						setDir(SOUTH)
-
-					if(!Adjacent(movement_target)) //can't reach food through windows.
-						return
-
-					if(isturf(movement_target.loc))
-						movement_target.attack_animal(src)
-					else if(ishuman(movement_target.loc) )
-						if(prob(20))
-							manual_emote("stares at [movement_target.loc]'s [movement_target] with a sad puppy-face")
-
+			find_food()
 		if(prob(1))
-			manual_emote(pick("dances around.","chases its tail!"))
-			INVOKE_ASYNC(GLOBAL_PROC, .proc/dance_rotate, src)
+			chase_tail()
+
+/mob/living/simple_animal/pet/dog/proc/bite(mob/living/carbon/target)
+	var/body_zone = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	if (target.body_position == LYING_DOWN)
+		body_zone = ran_zone()
+
+	do_attack_animation(target)
+	playsound(get_turf(src), 'sound/weapons/bite.ogg', 50, TRUE, -1)
+	target.Knockdown(2 SECONDS)
+	target.apply_damage(25, STAMINA, body_zone)
+	target.apply_damage(5, BRUTE, body_zone)
+
+	log_combat(src, target, "bit")
+	target.visible_message(
+		"<span class ='danger'>[src] bites [target]!</span>",
+		"<span class ='userdanger'>[src] bites you!</span>"
+	)
+
+/mob/living/simple_animal/pet/dog/proc/chase_tail()
+	manual_emote(pick("dances around.","chases its tail!"))
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/dance_rotate, src)
+
+// Feeding, chasing food, FOOOOODDDD
+/mob/living/simple_animal/pet/dog/proc/find_food()
+	if((movement_target) && !(isturf(movement_target.loc) || ishuman(movement_target.loc) ))
+		movement_target = null
+		stop_automated_movement = FALSE
+	if( !movement_target || !(movement_target.loc in oview(src, 3)) )
+		movement_target = null
+		stop_automated_movement = FALSE
+		for(var/obj/item/reagent_containers/food/snacks/S in oview(src,3))
+			if(isturf(S.loc) || ishuman(S.loc))
+				movement_target = S
+				break
+	if(movement_target)
+		stop_automated_movement = TRUE
+		step_to(src,movement_target,1)
+		sleep(3)
+		step_to(src,movement_target,1)
+		sleep(3)
+		step_to(src,movement_target,1)
+
+		if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
+			var/turf/T = get_turf(movement_target)
+			if(!T)
+				return
+			if (T.x < src.x)
+				setDir(WEST)
+			else if (T.x > src.x)
+				setDir(EAST)
+			else if (T.y < src.y)
+				setDir(SOUTH)
+			else if (T.y > src.y)
+				setDir(NORTH)
+			else
+				setDir(SOUTH)
+
+			if(!Adjacent(movement_target)) //can't reach food through windows.
+				return
+
+			if(isturf(movement_target.loc))
+				movement_target.attack_animal(src)
+			else if(ishuman(movement_target.loc) )
+				if(prob(20))
+					manual_emote("stares at [movement_target.loc]'s [movement_target] with a sad puppy-face")
 
 //Corgis and pugs are now under one dog subtype
-
 /mob/living/simple_animal/pet/dog/corgi
 	name = "\improper corgi"
 	real_name = "corgi"
@@ -654,3 +674,90 @@
 	..()
 
 	make_babies()
+
+
+// KF: Slobbermutt
+/mob/living/simple_animal/pet/dog/mutt
+	name = "\improper mutt"
+	gender = MALE // sprite has testicles
+	real_name = "mutt"
+	desc = "It's a mutt."
+	icon = 'icons/mob/pets.dmi'
+	icon_state = "slobbermutt"
+	icon_living = "slobbermutt"
+	icon_dead = "slobbermutt_dead"
+	speak = list("Boof!", "Woof!", "Bark!")
+	speak_emote = list("barks", "woofs", "boofs")
+	emote_hear = list("barks!", "woofs!", "pants.")
+	emote_see = list("shakes its head.", "chases its tail.", "shivers.")
+	faction = list("neutral")
+	health = 50
+	maxHealth = 50
+	butcher_results = list(/obj/item/food/meat/slab/mutt = 4)
+	gold_core_spawnable = FRIENDLY_SPAWN
+	collar_type = "slobbermutt"
+	held_state = "slobbermutt"
+	var/mob/living/carbon/attack_target
+	var/frustration = 0
+
+/mob/living/simple_animal/pet/dog/mutt/add_cell_sample()
+	AddElement(/datum/element/swabable, CELL_LINE_TABLE_PUG, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
+
+/mob/living/simple_animal/pet/dog/mutt/captains
+	name = "Slobbermutt"
+	desc = "A vicious-looking dog, fangs bared."
+
+/mob/living/simple_animal/pet/dog/mutt/captains/Life()
+	..()
+
+	// This logic necessarily builds off dog/Life()
+	// Check if alive, not resting, not buckled, we are on our movement turn, and we're not already moving at something.
+	// Theoretically this lets you bait the dog with a treat since that logic comes first.
+	if(stat || resting || buckled || movement_target)
+		return
+
+	// The scan for perps works in two ways:
+	// 1. If Mutt is in the Captain's room, he will be aware of any carbons in the room (even those he cannot see).
+	// 2. At all times, the Mutt can sniff out the disk within a few tiles of himself.
+	// Note: We do not check for an existing attack target here in case someone grabs the disk while we are busy.
+	var/turf/OT = get_turf(src)
+	for(var/obj/item/disk/nuclear/D in GLOB.poi_list)
+		var/mob/living/carbon/DT = get_turf(D)
+		if(OT.z != DT.z || get_dist(OT, DT) > 8)
+			continue
+		var/atom/DA = get_atom_on_turf(D, /mob/living)
+		if(DA == D || !iscarbon(DA))
+			continue
+		var/mob/living/carbon/DC = DA
+		// Protects you from Slobbermutt's keen mind reading senses.
+		if(HAS_TRAIT(DC, TRAIT_MINDSHIELD))
+			continue
+		// Dog will recognize all command staff as friends
+		var/datum/mind/DM = DC.last_mind
+		if(DM && (DM.assigned_role in GLOB.command_positions))
+			continue
+		attack_target = DC
+		break
+
+	if(attack_target)
+		if(attack_target.health < attack_target.crit_threshold)
+			walk_to(src, 0)
+			attack_target = null
+			return
+		if(frustration >= 8)
+			walk_to(src, 0)
+			attack_target = null
+			return
+		if(Adjacent(attack_target) && isturf(attack_target.loc))
+			bite(attack_target)
+		else
+			var/turf/olddist = get_dist(src, attack_target)
+			walk_to(src, attack_target, 0, 3)
+			if(get_dist(src, attack_target) >= olddist)
+				frustration++
+			else
+				frustration = 0
+
+/mob/living/simple_animal/pet/dog/mutt/chase_tail()
+	if(!attack_target)
+		return ..()
