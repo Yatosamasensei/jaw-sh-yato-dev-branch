@@ -37,11 +37,11 @@
 	serialized_ui_data["techweb_nodes"] = list()
 	for(var/ni in SSresearch.techweb_nodes)
 		var/datum/techweb_node/TN = SSresearch.techweb_nodes[ni]
- 		serialized_ui_data["techweb_nodes"][ni] = TN.serialize_list()
+		serialized_ui_data["techweb_nodes"][ni] = TN.serialize_list()
 	serialized_ui_data["techweb_designs"] = list()
 	for(var/di in SSresearch.techweb_designs)
 		var/datum/design/TD = SSresearch.techweb_designs[di]
- 		serialized_ui_data["techweb_designs"][di] = list(
+		serialized_ui_data["techweb_designs"][di] = list(
 			"id" = TD.id,
 			"name" = TD.name,
 			"desc" = TD.desc
