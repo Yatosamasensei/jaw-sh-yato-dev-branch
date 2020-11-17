@@ -48,6 +48,7 @@
 	product_ads = "Make those blood stains look fashionable!!"
 	vend_reply = "Thank you for using the MediDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 4,
+					/obj/item/flashlight/pen/paramedic = 4,
 					/obj/item/storage/backpack/duffelbag/med = 4,
 					/obj/item/storage/backpack/medic = 4,
 					/obj/item/storage/backpack/satchel/med = 4,
